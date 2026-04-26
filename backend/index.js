@@ -15,12 +15,13 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
+import cors from "cors";
+
 app.use(
   cors({
-    origin: [CLIENT_URL],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }),
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
 );
 // Option 2: Allow specific origins
 // app.use(
