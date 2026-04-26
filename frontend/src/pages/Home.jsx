@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
@@ -75,8 +76,13 @@ const Home = () => {
   }, [books]);
 
   return (
-    <div className='space-y-6 pb-16'>
-      <section className='rounded-[32px] border border-slate-200 bg-white p-6 shadow-lg'>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className='space-y-6 pb-16'>
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className='rounded-[32px] border border-slate-200 bg-white p-6 shadow-lg'
+      >
         <div className='flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between'>
           <div className='max-w-2xl'>
             <p className='text-sm uppercase tracking-[0.3em] text-sky-500'>Bookstore Dashboard</p>
@@ -92,7 +98,12 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className='mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4'>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className='mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4'
+        >
           <div className='rounded-3xl border border-slate-200 bg-slate-50 p-5'>
             <p className='text-sm text-slate-500'>Total books</p>
             <p className='mt-3 text-3xl font-semibold text-slate-900'>{stats.totalBooks}</p>
@@ -109,7 +120,7 @@ const Home = () => {
             <p className='text-sm text-slate-500'>Avg. price</p>
             <p className='mt-3 text-3xl font-semibold text-slate-900'>${stats.averagePrice}</p>
           </div>
-        </div>
+        </motion.div>
 
         <div className='mt-8 flex flex-col gap-4 lg:flex-row lg:items-center'>
           <label className='relative flex-1 max-w-xl'>
@@ -142,7 +153,7 @@ const Home = () => {
             <option value='title'>Title A–Z</option>
           </select>
         </div>
-      </section>
+      </motion.section>
 
       {loading ? (
         <div className='flex justify-center py-20'>
@@ -170,7 +181,7 @@ const Home = () => {
           Card view
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

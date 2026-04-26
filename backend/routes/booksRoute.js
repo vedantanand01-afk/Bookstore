@@ -1,5 +1,7 @@
 import express from 'express';
 import { Book } from '../models/bookModel.js';
+import { authMiddleware } from '../middleware/authMiddleware.js';
+import { adminMiddleware } from '../middleware/adminMiddleware.js';
 
 const router = express.Router();
 
@@ -40,7 +42,7 @@ const getSortOrder = (sort) => {
   }
 };
 
-router.post('/', async (req, res) => {
+router.post('/', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { title, author, publishYear, genre, description, rating, price, coverImage, publisher, inStock } = req.body;
 
@@ -97,7 +99,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { title, author, publishYear } = req.body;
 
@@ -122,7 +124,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
     const result = await Book.findByIdAndDelete(id);

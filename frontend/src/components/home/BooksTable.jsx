@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -21,7 +22,7 @@ const BooksTable = ({ books }) => {
         </thead>
         <tbody className='divide-y divide-slate-100'>
           {books.map((book, index) => (
-            <tr key={book._id} className='hover:bg-slate-50'>
+            <motion.tr key={book._id} whileHover={{ y: -1 }} transition={{ type: 'spring', stiffness: 120 }} className='hover:bg-slate-50'>
               <td className='whitespace-nowrap px-4 py-3 text-sm text-slate-700'>{index + 1}</td>
               <td className='whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-900'>{book.title}</td>
               <td className='whitespace-nowrap px-4 py-3 text-sm text-slate-600 hidden sm:table-cell'>{book.author}</td>
@@ -41,7 +42,7 @@ const BooksTable = ({ books }) => {
                   </Link>
                 </div>
               </td>
-            </tr>
+            </motion.tr>
           ))}
         </tbody>
       </table>
