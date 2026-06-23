@@ -53,6 +53,16 @@ const bookSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    // Vector embedding for semantic search / recommendations
+    embedding: {
+      type: [Number],
+      default: []
+    },
+    embeddingModel: {
+      type: String,
+      trim: true,
+      default: ''
+    },
   },
   { timestamps: true }
 );

@@ -9,6 +9,7 @@ import authRoute from './routes/authRoute.js';
 import cartRoute from './routes/cartRoute.js';
 import orderRoute from './routes/orderRoute.js';
 import wishlistRoute from './routes/wishlistRoute.js';
+import recommendRoute from './routes/recommendRoute.js';
 import adminRoute from './routes/adminRoute.js';
 
 const app = express();
@@ -49,6 +50,7 @@ app.use('/books', booksRoute);
 app.use('/cart', cartRoute);
 app.use('/orders', orderRoute);
 app.use('/wishlist', wishlistRoute);
+app.use('/recommend', recommendRoute);
 app.use('/admin', adminRoute);
 
 app.use((req, res) => {
