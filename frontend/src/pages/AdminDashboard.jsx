@@ -14,8 +14,8 @@ const AdminDashboard = () => {
       setLoading(true);
       try {
         const [salesRes, ordersRes] = await Promise.all([
-          axios.get('http://localhost:5555/admin/sales'),
-          axios.get('http://localhost:5555/admin/orders'),
+          axios.get('/admin/sales'),
+          axios.get('/admin/orders'),
         ]);
         setStats(salesRes.data);
         setOrders(ordersRes.data);

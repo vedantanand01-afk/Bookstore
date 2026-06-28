@@ -12,7 +12,7 @@ const Orders = () => {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5555/orders');
+        const response = await axios.get('/orders');
         setOrders(response.data);
       } catch (err) {
         setError('Unable to load order history. Please sign in first.');

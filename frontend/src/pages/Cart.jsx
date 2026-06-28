@@ -15,7 +15,7 @@ const Cart = () => {
     const fetchCart = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5555/cart');
+        const response = await axios.get('/cart');
         setCart(response.data);
       } catch (err) {
         setError('Unable to load cart. Sign in and try again.');
@@ -28,7 +28,7 @@ const Cart = () => {
 
   const handleRemove = async (bookId) => {
     try {
-      const response = await axios.delete(`http://localhost:5555/cart/item/${bookId}`);
+      const response = await axios.delete(`/cart/item/${bookId}`);
       setCart(response.data);
     } catch (err) {
       setError('Unable to remove item.');

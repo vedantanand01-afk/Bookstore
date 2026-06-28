@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
       if (!user) {
         setLoading(true);
         axios
-          .get('http://localhost:5555/auth/me')
+          .get('/auth/me')
           .then((response) => {
             setUser(response.data.user);
           })
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const login = async (email, password) => {
-    const response = await axios.post('http://localhost:5555/auth/login', { email, password });
+    const response = await axios.post('/auth/login', { email, password });
     const { token: accessToken, user: profile } = response.data;
     localStorage.setItem('booknest_token', accessToken);
     localStorage.setItem('booknest_user', JSON.stringify(profile));
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const response = await axios.post('http://localhost:5555/auth/register', { name, email, password });
+    const response = await axios.post('/auth/register', { name, email, password });
     const { token: accessToken, user: profile } = response.data;
     localStorage.setItem('booknest_token', accessToken);
     localStorage.setItem('booknest_user', JSON.stringify(profile));

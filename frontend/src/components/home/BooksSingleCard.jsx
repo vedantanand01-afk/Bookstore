@@ -26,7 +26,7 @@ const BooksSingleCard = ({ book }) => {
 
     setAdding(true);
     try {
-      await axios.post('http://localhost:5555/cart/add', { bookId: book._id, quantity: 1 });
+      await axios.post('/cart/add', { bookId: book._id, quantity: 1 });
       setAdded(true);
       setTimeout(() => setAdded(false), 1500);
     } catch (err) {
@@ -45,7 +45,7 @@ const BooksSingleCard = ({ book }) => {
 
     setWishlistLoading(true);
     try {
-      await axios.post(`http://localhost:5555/wishlist/${book._id}`);
+      await axios.post(`/wishlist/${book._id}`);
       setWishlistAdded(true);
       setTimeout(() => setWishlistAdded(false), 1500);
     } catch (err) {

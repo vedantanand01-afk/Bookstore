@@ -15,7 +15,7 @@ const DeleteBook = () => {
     const fetchBook = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5555/books/${id}`);
+        const response = await axios.get(`/books/${id}`);
         setBook(response.data);
       } catch (error) {
         console.error('Error fetching book:', error);
@@ -30,7 +30,7 @@ const DeleteBook = () => {
   const handleDeleteBook = async () => {
     setDeleting(true);
     try {
-      await axios.delete(`http://localhost:5555/books/${id}`);
+      await axios.delete(`/books/${id}`);
       navigate('/');
     } catch (error) {
       console.error('Error deleting book:', error);

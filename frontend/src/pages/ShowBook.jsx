@@ -26,7 +26,7 @@ const ShowBook = () => {
   const fetchBook = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5555/books/${id}`);
+      const response = await axios.get(`/books/${id}`);
       setBook(response.data);
     } catch (error) {
       console.error('Error fetching book:', error);
@@ -37,7 +37,7 @@ const ShowBook = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/reviews/book/${id}`);
+      const response = await axios.get(`/reviews/book/${id}`);
       setReviews(response.data);
     } catch (error) {
       console.error('Error fetching reviews:', error);
@@ -61,7 +61,7 @@ const ShowBook = () => {
     setReviewSuccess('');
 
     try {
-      await axios.post(`http://localhost:5555/reviews/book/${id}`, {
+      await axios.post(`/reviews/book/${id}`, {
         rating,
         comment: comment.trim(),
       });
@@ -86,7 +86,7 @@ const ShowBook = () => {
 
     setAdding(true);
     try {
-      await axios.post('http://localhost:5555/cart/add', { bookId: book._id, quantity: 1 });
+      await axios.post('/cart/add', { bookId: book._id, quantity: 1 });
       setAdded(true);
       setTimeout(() => setAdded(false), 1500);
     } catch (err) {
@@ -105,7 +105,7 @@ const ShowBook = () => {
 
     setWishlistLoading(true);
     try {
-      await axios.post(`http://localhost:5555/wishlist/${book._id}`);
+      await axios.post(`/wishlist/${book._id}`);
       setWishlistAdded(true);
       setTimeout(() => setWishlistAdded(false), 1500);
     } catch (err) {

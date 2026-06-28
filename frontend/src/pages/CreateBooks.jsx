@@ -39,7 +39,7 @@ const CreateBooks = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5555/books', data);
+      await axios.post('/books', data);
       navigate('/');
     } catch (error) {
       console.error('Error creating book:', error);

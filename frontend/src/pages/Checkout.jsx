@@ -15,7 +15,7 @@ const Checkout = () => {
     setLoading(true);
     setMessage('');
     try {
-      await axios.post('http://localhost:5555/orders', { shippingAddress: address, paymentMethod });
+      await axios.post('/orders', { shippingAddress: address, paymentMethod });
       setMessage('Order placed successfully. Redirecting to history...');
       setTimeout(() => navigate('/orders'), 1200);
     } catch (err) {

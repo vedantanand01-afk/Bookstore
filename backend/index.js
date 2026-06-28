@@ -19,20 +19,27 @@ app.use(helmet());
 app.use(express.json());
 
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://bookstore-omega-three.vercel.app',
+  'https://bookstore-1-6inp.onrender.com',
+].filter(Boolean)
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
     credentials: true,
   })
 );
-// Option 2: Allow specific origins
-// app.use(
-//   cors({
-//     origin: ['http://localhost:3000'], // Replace with your frontend URL
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
+
 
 app.get('/', (req, res) => {
   res.json({ message: 'BookNest API is running' });

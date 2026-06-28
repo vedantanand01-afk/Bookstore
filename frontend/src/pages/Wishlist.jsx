@@ -13,7 +13,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5555/wishlist');
+        const response = await axios.get('/wishlist');
         setWishlist(response.data);
       } catch (err) {
         setError('Unable to load wishlist. Please sign in and try again.');
@@ -27,7 +27,7 @@ const Wishlist = () => {
 
   const handleRemove = async (bookId) => {
     try {
-      const response = await axios.delete(`http://localhost:5555/wishlist/${bookId}`);
+      const response = await axios.delete(`/wishlist/${bookId}`);
       setWishlist(response.data);
     } catch (err) {
       setError('Unable to remove item from wishlist.');

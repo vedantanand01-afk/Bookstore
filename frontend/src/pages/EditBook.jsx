@@ -23,7 +23,7 @@ const EditBook = () => {
     const loadBook = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5555/books/${id}`);
+        const response = await axios.get(`/books/${id}`);
         const book = response.data;
         setTitle(book.title || '');
         setAuthor(book.author || '');
@@ -67,7 +67,7 @@ const EditBook = () => {
 
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5555/books/${id}`, data);
+      await axios.put(`/books/${id}`, data);
       navigate('/');
     } catch (error) {
       console.error('Error updating book:', error);
