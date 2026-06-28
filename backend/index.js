@@ -11,12 +11,13 @@ import orderRoute from './routes/orderRoute.js';
 import wishlistRoute from './routes/wishlistRoute.js';
 import recommendRoute from './routes/recommendRoute.js';
 import adminRoute from './routes/adminRoute.js';
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 
 app.use(helmet());
 app.use(express.json());
-import cors from "cors";
+
 
 app.use(
   cors({
